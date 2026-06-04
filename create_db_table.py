@@ -1,39 +1,41 @@
 import pymysql
-import db_connect2 as dbc
+import db_connect2 as dbc2
 
 def create_db():
-    query = 'create database if not exists akshith_db'
+    query = 'create database if not exists krishna_db'
     try:
-        connection = dbc.db_connect()
+        connection = dbc2.db_connect()
         cursor = connection.cursor()
         result = cursor.execute(query)
         connection.commit()
         cursor.close()
         #connection.close()
-        dbc.db_disconnect(connection)
+        dbc2.db_disconnect(connection)
         if result == 1:
-            print('Database created successfully')
+            print('DB created')
         else:
-            print('Database already exists')
+            print('DB already exist')
+
     except Exception as e:
-        print('Error while creating database:', e)
+        print('DB creation failed', e)
 
 def create_table():
-    query = 'create table if not exists employees(id int primary key auto_increment, name varchar(255) not null, designation varchar(255), salary float, phone_number bigint unique)'
+    query = 'create table if not exists emp(id int primary key auto_increment, name varchar(20), age int, salary float, phone bigint unique)'
     try:
-        connection = dbc.db_connect()
+        connection = dbc2.db_connect()
         cursor = connection.cursor()
         result = cursor.execute(query)
         connection.commit()
         cursor.close()
         #connection.close()
-        dbc.db_disconnect(connection)
+        dbc2.db_disconnect(connection)
         if result == 1:
-            print('Table created successfully')
+            print('Table created')
         else:
             print('Table already exists')
+
     except Exception as e:
-        print('Error while creating table:', e)
+        print('Table creation failed', e)
 
 create_db()
 create_table()
