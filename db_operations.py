@@ -148,4 +148,33 @@ def list_employees():
     except Exception as e:
         print('Employee listing failed', e)
 
-list_employees()
+def menu(choice):
+    match choice:
+            case 1:
+                insert_employee()
+            case 2:
+                update_employee()
+            case 3:
+                delete_employee()
+            case 4:
+                search_employee()
+            case 5:
+                list_employees()
+            case 6:
+                print('Exiting Employee App')
+                exit()
+            case _:
+                print('Invalid choice')
+
+def run_employee_app():
+    while True:
+        print('1. Insert Employee')
+        print('2. Update Employee Salary')
+        print('3. Delete Employee')
+        print('4. Search Employee')
+        print('5. List Employees')
+        print('6. Exit')
+        choice = int(input('Enter your choice: '))
+        menu(choice)
+
+run_employee_app()
