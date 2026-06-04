@@ -2,7 +2,7 @@ import pymysql
 import db_connect2 as dbc2
 
 def create_db():
-    query = 'create database if not exists krishna_db'
+    query = 'create database if not exists akshith_db'
     try:
         connection = dbc2.db_connect()
         cursor = connection.cursor()
