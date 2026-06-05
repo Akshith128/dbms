@@ -101,7 +101,7 @@ def delete_employee():
     try:
         connection = dbc2.db_connect()
         cursor = connection.cursor()
-        result = cursor.execute(query, id)
+        result = cursor.execute(query, (id,))
         connection.commit()
         cursor.close()
         dbc2.db_disconnect(connection)
@@ -119,7 +119,7 @@ def search_employee():
     try:
         connection = dbc2.db_connect()
         cursor = connection.cursor()
-        cursor.execute(query, id)
+        cursor.execute(query, (id,))
         row = cursor.fetchone()
         if row:
             print(row)
@@ -137,7 +137,7 @@ def list_employees():
         connection = dbc2.db_connect()
         cursor = connection.cursor()
         cursor.execute(query)
-        rows = cursor.fetchmany()
+        rows = cursor.fetchall()
         if rows:
             for row in rows:
                 print(row)
